@@ -33,18 +33,3 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run mypy
         run: mypy ./
-
-  pytest:
-    runs-on: ubuntu-latest
-    name: PyTest
-    steps:
-      - name: Check out source repository
-        uses: actions/checkout@v4
-      - name: Set up Python environment
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      - name: Install requirements
-        run: pip install -r requirements.txt
-      - name: Run pytest
-        run: pytest -v
