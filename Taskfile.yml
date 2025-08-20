@@ -1,0 +1,40 @@
+version: '3'
+
+tasks:
+
+  create_docker_network:
+    desc: "Create demo_tech_network for project"
+    cmd: sudo docker network create demo_tech_network && sudo docker network ls
+
+  delete_docker_network:
+    desc: "Delete demo_tech_network"
+    cmd: sudo docker network rm demo_tech_network  && sudo docker network ls
+
+  build_docker:
+    desc: "Run service with docker"
+    cmd: sudo docker compose -f deploy/docker-compose.yml up -d --build
+
+  run_service:
+    desc: "Run service"
+    cmd: sudo docker start demo_tech demo_tech_postgres
+
+  check_containers:
+    desc: "Check all containers"
+    cmd: sudo docker ps -a --filter "name=demo_tech" --filter "name=demo_tech_postgres"
+
+  stop_postgres_service:
+    desc: "Stop postgres"
+    cmd: sudo systemctl stop postgresql
+
+  start_postgres_service:
+    desc: "Start postgres"
+    cmd: sudo systemctl start postgresql
+
+  stop_service:
+    desc: "Stop service"
+    cmd: sudo docker stop demo_tech demo_tech_postgres
+
+  delete_containers:
+    desc: "Delete containers"
+    cmd: sudo docker rm -f demo_tech demo_tech_postgres && sudo docker rmi demo_tech postgres:16.3-alpine3.19
+

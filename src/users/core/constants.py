@@ -1,0 +1,2 @@
+USER_ROLE_ID: int = 1
+TRANSACTIONS_PER_PAGE: int = 50

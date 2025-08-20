@@ -1,0 +1,2 @@
+ADMIN_ROLE_ID: int = 2
+USERS_PER_PAGE: int = 10
